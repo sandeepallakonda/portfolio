@@ -21,7 +21,7 @@ pipeline {
         sh '''
           set -e
           # ensure webroot exists
-          sudo mkdir -p ${WEBROOT}
+          mkdir -p ${WEBROOT}
           # copy files from workspace to webroot (exclude .git)
           rsync -av --delete --exclude='.git' "${WORKSPACE}/" "${WEBROOT}/"
         '''
