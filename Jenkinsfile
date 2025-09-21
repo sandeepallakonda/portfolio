@@ -19,11 +19,10 @@ pipeline {
     stage('Deploy') {
       steps {
         sh '''
-          set -e
           # ensure webroot exists
           mkdir -p ${WEBROOT}
           # copy files from workspace to webroot (exclude .git)
-          rsync -av --delete --exclude='.git' "${WORKSPACE}/" "${WEBROOT}/"
+          rsync -r --delete --exclude='.git' "${WORKSPACE}/" "${WEBROOT}/"
         '''
       }
     }
